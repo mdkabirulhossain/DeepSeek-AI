@@ -1,6 +1,7 @@
 export const signup = (req, res) =>{
-    console.log("sign up function!!");
-    res.end("Signup working properly");
+    const data = req.body;
+    console.log(data)
+    res.send(data)
 }
 
 export const login = (req, res) =>{
