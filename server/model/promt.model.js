@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 
-const userSchema = new mongoose.Schema({
+const promtSchema = new mongoose.Schema({
     role:{
-        tyepe: String,
+        type: String,
         enum: ["user", "assistant"],
         required: true 
     },
