@@ -1,13 +1,16 @@
 import express from 'express'
 import 'dotenv/config'
 import mongoose from 'mongoose';
+import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.route.js'
+
 
 const app = express()
 const port = process.env.PORT || 5000;
 
 //middleware
 app.use(express.json())
+app.use(cookieParser)
 
 const URL = process.env.MongoDB_URI
 // console.log(URL);

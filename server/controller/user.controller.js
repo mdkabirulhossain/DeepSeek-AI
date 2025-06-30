@@ -50,6 +50,14 @@ export const login = async (req, res) => {
             { expiresIn: config.JWT_EXPIRES_IN }
         );
 
+        const cookieOption = {
+            expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+            httpOnly:true,
+            secure:process.env.NODE_ENV==='production',
+            sameSite:"Strict"
+        }
+        res.cookie("jwt", token, cookieOption);
+
         return res.status(200).json({
             message: "User Login Successfully",
             token,
