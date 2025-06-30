@@ -2,7 +2,7 @@ import OpenAI from "openai";
 import { Promt } from "../model/promt.model.js";
 
 const openai = new OpenAI({
-  apiKey: "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",
+  apiKey: process.env.OPEN_API_KEY,
   baseURL: "https://openrouter.ai/api/v1", // MUST include /api/v1
 });
 
