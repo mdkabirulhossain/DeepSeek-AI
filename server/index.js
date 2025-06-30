@@ -3,6 +3,7 @@ import 'dotenv/config'
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.route.js'
+import promtRoutes from './routes/promt.route.js'
 
 
 const app = express()
@@ -23,7 +24,12 @@ mongoose.connect(URL).then(()=>{
 })
 
 //routes
+//user route
 app.use("/api/v1/user", userRoutes)
+
+//promt route
+app.use("/api/v1/Deepseek", promtRoutes)
+
 
 
 app.get('/', (req, res) => {

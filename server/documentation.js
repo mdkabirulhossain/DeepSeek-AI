@@ -7,4 +7,6 @@
 // Step 7: Connect to the MongoDB database using Mongoose
 // Step 8: Use JWT for login authentication; also create a 'config.js' file in the root directory to manage secret keys
 // Step 9: For logout, store the token in a cookie during login and clear that cookie during logout
-
+// step 10: inside the model folde create file promt.model.js here create schema for promt
+// step 11: Inside controller folder create promt.controller.js file where write function for promt
+// step 12: create also route for promt
