@@ -1,9 +1,10 @@
-// step 1: Install express.js and also create initial server 
-// step 2: Install dotenv for store secret data in .env file
-// step 3: install mongoose for create schema 
-// step 4: for schema create model folder inside the folder create user.model.js and inside this file create user schema 
-// step 5: then creat Controller folder here write all the user function and export inside the User.controller.js
-// step 6: Create a routes folder inside the User.route.js file 
-// step 7: Connect MongoDB database
-// step 8: For login use JWT authentication. then need to create config.js file in root 
-// step 9: for logout perspective when user login set token in cookies and then in logout function clear this cookie 
+// Step 1: Install Express.js and create the initial server setup
+// Step 2: Install dotenv to store secret data in a .env file
+// Step 3: Install Mongoose to create and use schemas
+// Step 4: Create a 'models' folder, then create 'user.model.js' inside it and define the user schema
+// Step 5: Create a 'controllers' folder and write all user functions in 'user.controller.js', then export them
+// Step 6: Create a 'routes' folder and define all routes in 'user.route.js'
+// Step 7: Connect to the MongoDB database using Mongoose
+// Step 8: Use JWT for login authentication; also create a 'config.js' file in the root directory to manage secret keys
+// Step 9: For logout, store the token in a cookie during login and clear that cookie during logout
+
