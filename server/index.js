@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 
 //middleware
 app.use(express.json())
-app.use(cookieParser)
+app.use(cookieParser())
 
 const URL = process.env.MongoDB_URI
 // console.log(URL);

@@ -76,6 +76,16 @@ export const login = async (req, res) => {
 }
 
 export const logout = (req, res) => {
-    console.log("logout function!!");
-    res.end("logout function!!");
-}
+  try {
+    res.clearCookie("jwt", {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "Strict",
+    });
+
+    return res.status(200).json({ message: "User logged out successfully" });
+  } catch (error) {
+    console.error("Logout failed:", error);
+    return res.status(500).json({ error: "Internal Server Error during logout" });
+  }
+};
