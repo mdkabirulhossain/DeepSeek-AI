@@ -7,8 +7,9 @@
 // Step 7: Connect to the MongoDB database using Mongoose
 // Step 8: Use JWT for login authentication; also create a 'config.js' file in the root directory to manage secret keys
 // Step 9: For logout, store the token in a cookie during login and clear that cookie during logout
-// step 10: inside the model folde create file promt.model.js here create schema for promt
-// step 11: Inside controller folder create promt.controller.js file where write function for promt
-// step 12: create also route for promt
-// step 13: for promt need api I take free api from openRouter.ai  
-// step 14: Create a middleware for promt inside the middleware folder
+// Step 10: Inside the 'models' folder, create a file named 'promt.model.js' and define the schema for the prompt
+// Step 11: Inside the 'controllers' folder, create a file named 'promt.controller.js' and write functions for the prompt
+// Step 12: Create a route file for the prompt as well
+// Step 13: For prompt-related features, use a free API from OpenRouter.ai
+// Step 14: Create a middleware file for the prompt inside the 'middleware' folder
+// Step 15: In this middleware, send the token through the request header; if the token matches, the AI assistant will respond
