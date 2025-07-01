@@ -1,8 +1,9 @@
 import express from 'express'
 import { sendPromt } from '../controller/promt.controller.js';
+import { userMiddleware } from '../middleware/promt.middleware.js';
 
 const route = express.Router();
 
-route.post('/promt', sendPromt);
+route.post('/promt',userMiddleware, sendPromt);
 
 export default route

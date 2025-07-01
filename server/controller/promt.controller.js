@@ -3,63 +3,53 @@ import { Promt } from "../model/promt.model.js";
 
 const openai = new OpenAI({
   apiKey: process.env.OPEN_API_KEY,
-  baseURL: "https://openrouter.ai/api/v1", // MUST include /api/v1
+  baseURL: "https://openrouter.ai/api/v1",
 });
 
 export const sendPromt = async (req, res) => {
   const { content } = req.body;
 
+  // 🧪 Validate input
   if (!content || !content.trim()) {
-    return res.status(400).json({ errors: "Prompt content is required" });
+    return res.status(400).json({ error: "Prompt content is required." });
   }
 
   try {
-    // Save user prompt
-    await Promt.create({
-      role: "user",
-      content: content.trim(),
-    });
+    // 💾 Save user's prompt
+    await Promt.create({ role: "user", content: content.trim() });
 
-    // Make API call to OpenRouter
+    // 🤖 Request response from OpenRouter
     const completion = await openai.chat.completions.create({
       model: "deepseek/deepseek-r1-0528:free",
       messages: [{ role: "user", content: content.trim() }],
       extra_headers: {
-        "HTTP-Referer": "https://yourdomain.com", // Replace with your actual domain
-        "X-Title": "Your App Name", // Optional title for ranking
+        "HTTP-Referer": "https://yourdomain.com",
+        "X-Title": "Your App Name",
       },
-      extra_body: {}, // Required by OpenRouter API
+      extra_body: {},
     });
 
-    // Log full response for debugging
     console.log("OpenRouter Response:", completion);
 
-    // Safe check for AI response
-    if (!completion.choices || completion.choices.length === 0) {
-      console.error("No choices found in OpenRouter response.");
-      throw new Error("No choices returned from model");
+    const aiMessage = completion?.choices?.[0]?.message?.content;
+
+    // 🚫 Handle no response from model
+    if (!aiMessage || aiMessage.trim() === "") {
+      console.warn("AI returned no content.");
+      return res.status(400).json({ error: "The AI could not generate a response for this prompt." });
     }
 
-    const aiContent = completion.choices[0]?.message?.content;
+    // 💾 Save assistant's response
+    await Promt.create({ role: "assistant", content: aiMessage });
 
-    if (!aiContent) {
-      console.error("No content found in AI message.");
-      throw new Error("No content returned from model");
-    }
-
-    // Save assistant response
-    await Promt.create({
-      role: "assistant",
-      content: aiContent,
-    });
-
-    // Send back to frontend
-    return res.status(200).json({ reply: aiContent });
+    // ✅ Send response to frontend
+    return res.status(200).json({ reply: aiMessage });
 
   } catch (error) {
+    // 🧯 Catch unexpected internal/server errors
     console.error("sendPromt error:", error);
     return res.status(500).json({
-      error: "Something went wrong in Prompt API",
+      error: "Internal Server Error. Please try again later.",
       details: error.message,
     });
   }

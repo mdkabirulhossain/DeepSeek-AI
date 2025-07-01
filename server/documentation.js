@@ -11,3 +11,4 @@
 // step 11: Inside controller folder create promt.controller.js file where write function for promt
 // step 12: create also route for promt
 // step 13: for promt need api I take free api from openRouter.ai  
+// step 14: Create a middleware for promt inside the middleware folder
