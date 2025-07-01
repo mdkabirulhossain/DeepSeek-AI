@@ -18,7 +18,7 @@ export const userMiddleware = (req, res, next) => {
     console.log("Decoded token:", decoded);
 
     // Attach user info to request (adjust based on your token structure)
-    req.userID = decoded.userId || decoded.id;
+    req.userId = decoded.userId || decoded.id;
 
     next(); // Proceed to next middleware
   } catch (error) {

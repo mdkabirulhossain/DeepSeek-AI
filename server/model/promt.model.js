@@ -1,16 +1,21 @@
 import mongoose from "mongoose";
 
 const promtSchema = new mongoose.Schema({
-    role:{
+    userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true
+    },
+    role: {
         type: String,
         enum: ["user", "assistant"],
-        required: true 
+        required: true
     },
-    content:{
+    content: {
         type: String,
         required: true
     },
-    createdAt:{
+    createdAt: {
         type: Date,
         default: Date.now,
     }

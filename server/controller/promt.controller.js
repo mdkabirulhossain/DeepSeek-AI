@@ -8,6 +8,7 @@ const openai = new OpenAI({
 
 export const sendPromt = async (req, res) => {
   const { content } = req.body;
+  const userId = req.userId;
 
   // 🧪 Validate input
   if (!content || !content.trim()) {
@@ -16,7 +17,7 @@ export const sendPromt = async (req, res) => {
 
   try {
     // 💾 Save user's prompt
-    await Promt.create({ role: "user", content: content.trim() });
+    await Promt.create({ userId,  role: "user", content: content.trim() });
 
     // 🤖 Request response from OpenRouter
     const completion = await openai.chat.completions.create({
@@ -40,7 +41,7 @@ export const sendPromt = async (req, res) => {
     }
 
     // 💾 Save assistant's response
-    await Promt.create({ role: "assistant", content: aiMessage });
+    await Promt.create({userId,  role: "assistant", content: aiMessage });
 
     // ✅ Send response to frontend
     return res.status(200).json({ reply: aiMessage });
