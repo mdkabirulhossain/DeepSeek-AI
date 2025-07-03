@@ -24,7 +24,7 @@ const Sidebar = () => {
                         <img className='rounded-full w-8 h-8' src="" alt="" />
                         <span className='text-gray-300'>My Profile</span>
                     </div>
-                    <button className='flex items-center gap-2 text-white px-2 py-2 rounded-lg hover:bg-gray-700 transition'><MdLogout className='h-6 w-6' /> Logout</button>
+                    <button className='flex items-center gap-2 text-white px-2 py-2 rounded-lg hover:bg-gray-700 transition duration-1000'><MdLogout className='h-6 w-6' /> Logout</button>
                 </div>
             </div>
         </div>

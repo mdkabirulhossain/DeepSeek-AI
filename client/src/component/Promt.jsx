@@ -3,7 +3,14 @@ import React from 'react';
 const Promt = () => {
     return (
         <div>
-            <h1>promt</h1>
+            {/* start  */}
+            <div>
+                <div>
+                    <img src="" alt="deepseek img" />
+                    <h1>Hi, I'm DeepSeek</h1>
+                </div>
+                <p>How can I help you today?</p>
+            </div>
         </div>
     );
 };
