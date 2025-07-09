@@ -2,6 +2,7 @@ import React from 'react';
 import { TbWorld } from "react-icons/tb";
 import { FaArrowUp, FaReact } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
+import logo from '../assets/deepseek icon.png'
 
 
 const Promt = () => {
@@ -10,7 +11,7 @@ const Promt = () => {
             {/* start  */}
             <div>
                 <div>
-                    <img src="" alt="deepseek img" />
+                    <img src={logo} alt="deepseek img" />
                     <h1>Hi, I'm DeepSeek</h1>
                 </div>
                 <p>How can I help you today?</p>
