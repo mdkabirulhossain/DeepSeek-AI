@@ -12,10 +12,11 @@ const Home = () => {
 
             {/* promt  */}
             <div className='flex-1 flex flex-col w-full'>
-                 <div className='flex-1 flex items-center justify-center px-6'>
+                 {/* <div className='flex-1 flex items-center justify-center px-6'>
                     <Promt />
 
-                 </div>
+                 </div> */}
+                 <Promt />
             </div>
         </div>
     );
