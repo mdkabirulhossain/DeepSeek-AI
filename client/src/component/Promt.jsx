@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { TbWorld } from "react-icons/tb";
 import { FaArrowUp, FaReact } from "react-icons/fa";
 import { FaLink } from "react-icons/fa6";
@@ -6,6 +6,24 @@ import logo from '../assets/deepseek icon.png'
 
 
 const Promt = () => {
+    const [inputValue, setInputValue] = useState("")
+    const [typeMessage, setTypeMessage] = useState("")
+
+    const handleSend = () => {
+        const trimed = inputValue.trim();
+        if (!trimed) return
+        setTypeMessage(trimed)
+        setInputValue("")
+        // console.log("Hi")
+    }
+
+    const handleOnKeyDown = (e) => {
+        if (e.key === "Enter") {
+            handleSend()
+            // console.log("Enter working")
+        }
+    }
+
     return (
         <div className='flex flex-col items-center justify-center flex-1 w-full px-4 pb-4'>
             {/* start  */}
@@ -18,27 +36,36 @@ const Promt = () => {
             </div>
 
             {/* Promt  */}
-            <div className='w-full max-w-4xl flex-1 overflow-y-auto mt-6 mb-4 space-y-4 max-h-[60vh] px-1'>
-                
+            {/* <div className='w-full max-w-4xl flex-1 overflow-y-auto mt-6 mb-4 space-y-4 max-h-[60vh] px-1'>
+                {typeMessage}
+            </div> */}
+            <div className="w-full max-w-4xl overflow-y-auto mt-6 mb-4 space-y-4 max-h-[60vh] px-1">
+                {typeMessage}
             </div>
+
 
             {/* input box  */}
             <div className='w-full max-w-4xl relative mt-2'>
                 <div className='bg-[#2f2f2f] rounded-[2rem] px-6 py-8 shadow-md'>
-                    <input type="text" className='w-full outline-none' placeholder='Message DeepSeek' />
+                    <input type="text"
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
+                        onKeyDown={handleOnKeyDown}
+                        className='w-full outline-none'
+                        placeholder='Message DeepSeek' />
                     <div className='flex items-center justify-between '>
                         <div className='flex gap-5 mt-3'>
-                            <button className='flex gap-1 items-center'><FaReact className='text-white'/> DeepThink (R1)</button>
-                            <button className='flex gap-1 items-center'><TbWorld className='text-white'/> Search</button>
+                            <button className='flex gap-1 items-center'><FaReact className='text-white' /> DeepThink (R1)</button>
+                            <button className='flex gap-1 items-center'><TbWorld className='text-white' /> Search</button>
                         </div>
                         <div className='flex gap-4'>
-                            <button > <FaLink className='text-whit'/></button>
-                            <button className='rounded-full'><FaArrowUp /> </button>
+                            <button > <FaLink className='text-gray-400 hover:text-white w-6 h-6 ' /></button>
+                            <button onClick={handleSend} className='rounded-full bg-gray-400 hover:bg-blue-900 p-2 text-white transition'><FaArrowUp /> </button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
 
         </div>
     );
