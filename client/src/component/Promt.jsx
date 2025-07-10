@@ -40,7 +40,13 @@ const Promt = () => {
                 {typeMessage}
             </div> */}
             <div className="w-full max-w-4xl overflow-y-auto mt-6 mb-4 space-y-4 max-h-[60vh] px-1">
-                {typeMessage}
+                {typeMessage && (
+                    <div className='w-full flex justify-end'> 
+                        <div className='bg-blue-500 text-white self-end rounded-xl px-4 py-3'>
+                        {typeMessage}
+                        </div>
+                    </div>
+                )}
             </div>
 
 
