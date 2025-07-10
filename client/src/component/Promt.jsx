@@ -7,7 +7,7 @@ import logo from '../assets/deepseek icon.png'
 
 const Promt = () => {
     return (
-        <div className='flex flex-col items-center justify-between flex-1 w-full px-4 pb-4'>
+        <div className='flex flex-col items-center justify-center flex-1 w-full px-4 pb-4'>
             {/* start  */}
             <div className='mt-16 text-center'>
                 <div className='flex items-center justify-center gap-2'>
