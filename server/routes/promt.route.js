@@ -6,4 +6,4 @@ const route = express.Router();
 
 route.post('/promt',userMiddleware, sendPromt);
 
-export default route
+export default route;
