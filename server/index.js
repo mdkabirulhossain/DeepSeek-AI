@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
 import userRoutes from './routes/user.route.js'
 import promtRoutes from './routes/promt.route.js'
+import cors from 'cors'
 
 
 const app = express()
@@ -12,6 +13,14 @@ const port = process.env.PORT || 5000;
 //middleware
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors(
+{
+  origin: process.env.FRONT_END_URL,
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}
+))
 
 const URL = process.env.MongoDB_URI
 // console.log(URL);
