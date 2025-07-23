@@ -40,7 +40,7 @@ app.use("/api/v1/user", userRoutes)
 app.use("/api/v1/Deepseek", promtRoutes)
 
 
-
+//Lading route
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
